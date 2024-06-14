@@ -1,9 +1,27 @@
 {
-  "history": "Charminar is a historic monument located in Hyderabad, India. It was built in 1591 by Sultan Muhammad Quli Qutb Shah, the fifth ruler of the Qutb Shahi dynasty. The monument was constructed to commemorate the end of a deadly plague in the city and to establish a new capital for the dynasty.",
-  "impEvents": [
-    {
-      "Year": "1591",
-      "Details": "Charminar was built by Sultan Muhammad Quli Qutb Shah."
-    }
-  ]
+"Place": "Machu Picchu, Peru",
+"history": "Machu Picchu is believed to have been built in the 15th century by the Inca rulers. It served as a royal estate or religious retreat for the Inca emperor Pachacuti. The site was abandoned during the Spanish Conquest and was largely forgotten until it was rediscovered by Hiram Bingham in 1911. Today, Machu Picchu is one of the most famous archaeological sites in the world, attracting millions of visitors each year.",
+"Ecological Relevance": "Machu Picchu is located in the Andes Mountains and is surrounded by diverse ecosystems, including cloud forests and grasslands. The site is home to a variety of flora and fauna, some of which are endemic to the region. Preservation efforts are ongoing to protect the biodiversity of the area.",
+"timeline": [
+  {
+    "Year": "1450-1470",
+    "Details": "Construction of Machu Picchu believed to have started during the reign of Inca emperor Pachacuti."
+  },
+  {
+    "Year": "1532",
+    "Details": "Abandoned during the Spanish Conquest, likely to avoid capture by the Spanish invaders."
+  },
+  {
+    "Year": "1911",
+    "Details": "Rediscovered by American explorer Hiram Bingham, bringing international attention to the site."
+  },
+  {
+    "Year": "1983",
+    "Details": "Declared a UNESCO World Heritage Site, recognizing its cultural and historical significance."
+  },
+  {
+    "Year": "2007",
+    "Details": "Voted as one of the New Seven Wonders of the World in a global poll."
+  }
+]
 }

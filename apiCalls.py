@@ -1,25 +1,32 @@
 import json
-from openai import OpenAI
 import os
 import sqlite3
+from openai import OpenAI
 from dotenv import load_dotenv
+from db import init_db, insert_into_db
 
+# Load environment variables
 load_dotenv()
 
+# API key from environment variables
 api_key = os.getenv('OPENAI_API_KEY')
-sysPrompt = """You are a history  guide designed to output JSON. of format {
-  "history": "String",
-  "impEvents": [
-    {
-      "Year": "String",
-      "Details": "String"
-    }
-  ]
-}
- }"""
+
+# System and user prompts
+sysPrompt = """You are a history guide designed to output JSON. of format {
+"Place": "String",
+"history": "String... 5 lines",
+"Ecological Relevance": "String",
+"timeline": [
+  {
+    "Year": "String",
+    "Details": "String"
+  }... 10 events(major)
+]
+}"""
 userPrompt = f"Tell me about the history of: ."
 
-def callGPT3( systemPrompt=sysPrompt, userPrompt=userPrompt , loc=""):
+# Function to call GPT-3 and retrieve historical data
+def callGPT3(systemPrompt=sysPrompt, userPrompt=userPrompt, loc="", dataSave = False):
     client = OpenAI(api_key=api_key)
     
     response = client.chat.completions.create(
@@ -33,18 +40,50 @@ def callGPT3( systemPrompt=sysPrompt, userPrompt=userPrompt , loc=""):
 
     content_str = response.choices[0].message.content
     content_dict = json.loads(content_str)
-    # whether the call failed ?
+
+    # Print content
     print(content_str)
+
+    # Save response as text
     with open('response.txt', 'w') as f:
         f.write(content_str)
 
-    with open('response.json', 'w') as f:
-        json.dump(content_dict, f, indent=4)
-
-    return content_dict
-
-if __name__ == "__main__":
+    if dataSave == True:
+        os.makedirs('./data', exist_ok=True)
+        place_name = content_dict.get("Place", "unknown").replace(" ", "_").lower()
+        json_path = os.path.join('./data', f'{place_name}.json')
+    else:
+        place_name = content_dict.get("Place", "unknown").replace(" ", "_").lower()
+        json_path = os.path.join('response.json') 
     
-    userPrompt = ""
-    res = callGPT3( userPrompt=userPrompt, loc="Charminar")
-    print(res)
+    with open(json_path, 'w') as f:
+        json.dump(content_dict, f, indent=4)
+    
+    print(f"Data saved to {json_path}")
+    return content_str
+
+# Main execution
+if __name__ == "__main__":
+    # Initialize the database
+    init_db()
+    
+    # Example location to query
+    
+    popular_places = [
+    "The Great Wall of China",
+    "Machu Picchu",
+    "The Colosseum",
+    "The Pyramids of Giza",
+    "The Taj Mahal",
+    "Stonehenge",
+    "The Acropolis",
+    "Petra",
+    "Chichen Itza",
+    "Angkor Wat"
+]
+    
+    # Call the function to retrieve data from GPT-3
+    for location in popular_places:
+        data = callGPT3(loc=location, dataSave=True)
+    
+    

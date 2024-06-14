@@ -1,8 +1,13 @@
 
-
-api_key = "sk-proj-JLzk6FXUxasSMpszsbZ2T3BlbkFJrkrBlaNbo1Rj4TLu8Vz4"
+from dotenv import load_dotenv
 from openai import OpenAI
-client = OpenAI()
+import os
+
+load_dotenv()
+api_key = ""
+print(api_key)
+
+client = OpenAI(api_key=api_key)
 
 response = client.chat.completions.create(
   model="gpt-4o",

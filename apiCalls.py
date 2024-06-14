@@ -1,9 +1,9 @@
 import json
 import os
-import sqlite3
+
 from openai import OpenAI
 from dotenv import load_dotenv
-from db import init_db, insert_into_db
+
 
 # Load environment variables
 load_dotenv()
@@ -64,22 +64,14 @@ def callGPT3(systemPrompt=sysPrompt, userPrompt=userPrompt, loc="", dataSave = F
 
 # Main execution
 if __name__ == "__main__":
-    # Initialize the database
-    init_db()
+    
     
     # Example location to query
     
     popular_places = [
-    "The Great Wall of China",
-    "Machu Picchu",
-    "The Colosseum",
-    "The Pyramids of Giza",
-    "The Taj Mahal",
-    "Stonehenge",
-    "The Acropolis",
-    "Petra",
-    "Chichen Itza",
-    "Angkor Wat"
+    "Hawa Mahal",
+    "Twin towers",
+    "Statue of liberty"
 ]
     
     # Call the function to retrieve data from GPT-3

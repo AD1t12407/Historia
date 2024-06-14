@@ -6,7 +6,7 @@ from maps import get_autocomplete_results, get_map_url, get_place_details, get_s
 from print import read_json, display_data
 
 
-
+load_dotenv()
 
 def main():
     input_text = st.text_input("Enter a location", "VNR VJIET")

@@ -13,16 +13,40 @@ api_key = os.getenv('OPENAI_API_KEY')
 
 # System and user prompts
 sysPrompt = """You are a history guide designed to output JSON. of format {
-"Place": "String",
-"history": "String... 5 lines",
-"Ecological Relevance": "String",
-"timeline": [
-  {
-    "Year": "String",
-    "Details": "String"
-  }... 10 events(major)
-]
-}"""
+  "Place": "String",
+  "Location": {
+    "Country": "String",
+    "Coordinates": {
+      "Latitude": "String",
+      "Longitude": "String"
+    }
+  },
+  "History": "String... detailed story-like history, around 20 lines",
+  "Ecological Relevance": "String",
+  "Cultural Significance": "String",
+  "Key Figures": [
+    {
+      "Name": "String",
+      "Role": "String",
+      "Contribution": "String"
+    }... 3-5 key figures
+  ],
+  "Economic Importance": "String",
+  "Major Landmarks": [
+    {
+      "Name": "String",
+      "Description": "String"
+    }... 3-5 major landmarks
+  ],
+  "Timeline": [
+    {
+      "Year": "String",
+      "Details": "String"
+    }... 10 major events, each with a detailed description
+  ]
+}
+Ensure the history is rich in detail, weaving together significant events, cultural developments, and key figures in a narrative form. The timeline should highlight crucial moments, explaining their importance in shaping the place's history."""
+
 userPrompt = f"Tell me about the history of: ."
 
 # Function to call GPT-3 and retrieve historical data

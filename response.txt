@@ -1,0 +1,9 @@
+{
+  "history": "Charminar is a historic monument located in Hyderabad, India. It was built in 1591 by Sultan Muhammad Quli Qutb Shah, the fifth ruler of the Qutb Shahi dynasty. The monument was constructed to commemorate the end of a deadly plague in the city and to establish a new capital for the dynasty.",
+  "impEvents": [
+    {
+      "Year": "1591",
+      "Details": "Charminar was built by Sultan Muhammad Quli Qutb Shah."
+    }
+  ]
+}

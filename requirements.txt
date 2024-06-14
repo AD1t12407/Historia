@@ -1,0 +1,7 @@
+streamlit
+geopy
+requests
+google-cloud-vision
+google-cloud-texttospeech
+openai
+python-dotenv
